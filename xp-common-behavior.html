@@ -52,11 +52,26 @@ A behavior used to merge common application behaviors.
 <script>
     Polymer.XPCommonBehaviorImp = {
 
+        /**
+         * Set the shared language.
+         *
+         * @method setLanguage
+         * @param {string} value
+         * @returns {Element}
+         */
+        setLanguage: function (value) {
+            var self = this;
+            self.share('language', value);
+            return self;
+        },
+
+        /*********************************************************************/
+
         // PROPERTIES
         properties: {
 
             /**
-             * TODO DOC
+             * The element's data.
              *
              * @attribute data
              * @type *
@@ -67,7 +82,21 @@ A behavior used to merge common application behaviors.
             },
 
             /**
-             * TODO DOC
+             * The shared language.
+             *
+             * @attribute language
+             * @type string
+             * @notifies
+             * @readonly
+             */
+            language: {
+                computed: '_computeLanguage(shared.*)',
+                notify: true,
+                type: String
+            },
+
+            /**
+             * The current locale.
              *
              * @attribute locale
              * @type Object
@@ -75,13 +104,27 @@ A behavior used to merge common application behaviors.
              * @readonly
              */
             locale: {
-                computed: '_computeLocale(shared.*)',
+                computed: '_computeLocale(language, locales.*)',
                 notify: true,
                 type: Object
             },
 
             /**
-             * TODO DOC
+             * The shared locales.
+             *
+             * @attribute locales
+             * @type Object
+             * @notifies
+             * @readonly
+             */
+            locales: {
+                computed: '_computeLocales(shared.*)',
+                notify: true,
+                type: Object
+            },
+
+            /**
+             * The shared schema.
              *
              * @attribute schema
              * @type Object
@@ -98,8 +141,18 @@ A behavior used to merge common application behaviors.
         /*********************************************************************/
 
         // COMPUTER
-        _computeLocale: function () {
-            return (this.shared && this.shared.locale) || null;
+        _computeLanguage: function () {
+            return (this.shared && this.shared.language) || null;
+        },
+
+        // COMPUTER
+        _computeLocale: function (language) {
+            return (this.locales && language && this.locales[language]) || null;
+        },
+
+        // COMPUTER
+        _computeLocales: function () {
+            return (this.shared && this.shared.locales) || null;
         },
 
         // COMPUTER
