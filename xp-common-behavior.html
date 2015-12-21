@@ -52,21 +52,6 @@ A behavior used to merge common application behaviors.
 <script>
     Polymer.XPCommonBehaviorImp = {
 
-        /**
-         * Set the shared language.
-         *
-         * @method setLanguage
-         * @param {string} value
-         * @returns {Element}
-         */
-        setLanguage: function (value) {
-            var self = this;
-            self.share('language', value);
-            return self;
-        },
-
-        /*********************************************************************/
-
         // PROPERTIES
         properties: {
 
@@ -79,48 +64,6 @@ A behavior used to merge common application behaviors.
              */
             data: {
                 notify: true
-            },
-
-            /**
-             * The shared language.
-             *
-             * @attribute language
-             * @type string
-             * @notifies
-             * @readonly
-             */
-            language: {
-                computed: '_computeLanguage(shared.*)',
-                notify: true,
-                type: String
-            },
-
-            /**
-             * The current locale.
-             *
-             * @attribute locale
-             * @type Object
-             * @notifies
-             * @readonly
-             */
-            locale: {
-                computed: '_computeLocale(language, locales.*)',
-                notify: true,
-                type: Object
-            },
-
-            /**
-             * The shared locales.
-             *
-             * @attribute locales
-             * @type Object
-             * @notifies
-             * @readonly
-             */
-            locales: {
-                computed: '_computeLocales(shared.*)',
-                notify: true,
-                type: Object
             },
 
             /**
@@ -139,21 +82,6 @@ A behavior used to merge common application behaviors.
         },
 
         /*********************************************************************/
-
-        // COMPUTER
-        _computeLanguage: function () {
-            return (this.shared && this.shared.language) || null;
-        },
-
-        // COMPUTER
-        _computeLocale: function (language) {
-            return (this.locales && language && this.locales[language]) || null;
-        },
-
-        // COMPUTER
-        _computeLocales: function () {
-            return (this.shared && this.shared.locales) || null;
-        },
 
         // COMPUTER
         _computeSchema: function () {
