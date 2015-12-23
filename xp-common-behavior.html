@@ -20,9 +20,7 @@ A behavior used to merge common application behaviors.
 
 @behavior xp-array-behavior /bower_components/xp-array-behavior/xp-array-behavior.html
 @behavior xp-commands-behavior /bower_components/xp-commands-behavior/xp-commands-behavior.html
-@behavior xp-device-behavior /bower_components/xp-device/xp-device-behavior.html
 @behavior xp-i18n-behavior /bower_components/xp-i18n-behavior/xp-i18n-behavior.html
-@behavior xp-overlay-injector /bower_components/xp-overlay/xp-overlay-injector.html
 @behavior xp-refirer-behavior /bower_components/xp-refirer-behavior/xp-refirer-behavior.html
 @behavior xp-shared-behavior /bower_components/xp-shared-behavior/xp-shared-behavior.html
 
@@ -30,10 +28,8 @@ A behavior used to merge common application behaviors.
 @dependency expandjs ExpandJS/expandjs#0.10.0
 @dependency xp-array-behavior ExpandJS/xp-array-behavior#0.10.0
 @dependency xp-commands-behavior ExpandJS/xp-commands-behavior#0.10.0
-@dependency xp-device ExpandJS/xp-device#0.10.0
 @dependency xp-i18n-behavior ExpandJS/xp-i18n-behavior#0.10.0
 @dependency xp-object-behavior ExpandJS/xp-object-behavior#0.10.0
-@dependency xp-overlay ExpandJS/xp-overlay#0.10.0
 @dependency xp-refirer-behavior ExpandJS/xp-refirer-behavior#0.10.0
 @dependency xp-shared-behavior ExpandJS/xp-shared-behavior#0.10.0
 -->
@@ -42,10 +38,8 @@ A behavior used to merge common application behaviors.
 <link rel="import" href="../expandjs/expandjs.html">
 <link rel="import" href="../xp-array-behavior/xp-array-behavior.html">
 <link rel="import" href="../xp-commands-behavior/xp-commands-behavior.html">
-<link rel="import" href="../xp-device/xp-device-behavior.html">
 <link rel="import" href="../xp-i18n-behavior/xp-i18n-behavior.html">
 <link rel="import" href="../xp-object-behavior/xp-object-behavior.html">
-<link rel="import" href="../xp-overlay/xp-overlay-injector.html">
 <link rel="import" href="../xp-refirer-behavior/xp-refirer-behavior.html">
 <link rel="import" href="../xp-shared-behavior/xp-shared-behavior.html">
 
@@ -54,17 +48,6 @@ A behavior used to merge common application behaviors.
 
         // PROPERTIES
         properties: {
-
-            /**
-             * The element's data.
-             *
-             * @attribute data
-             * @type *
-             * @notifies
-             */
-            data: {
-                notify: true
-            },
 
             /**
              * The shared schema.
@@ -84,6 +67,11 @@ A behavior used to merge common application behaviors.
         /*********************************************************************/
 
         // COMPUTER
+        _computeProperty: function (value) {
+            return value;
+        },
+
+        // COMPUTER
         _computeSchema: function () {
             return (this.shared && this.shared.schema) || null;
         }
@@ -92,10 +80,8 @@ A behavior used to merge common application behaviors.
     Polymer.XPCommonBehavior = [
         Polymer.XPArrayBehavior,
         Polymer.XPCommandsBehavior,
-        Polymer.XPDeviceBehavior,
         Polymer.XPI18nBehavior,
         Polymer.XPObjectBehavior,
-        Polymer.XPOverlayInjector,
         Polymer.XPRefirerBehavior,
         Polymer.XPSharedBehavior,
         Polymer.XPCommonBehaviorImp

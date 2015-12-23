@@ -23,10 +23,8 @@
     "expandjs": "ExpandJS/expandjs#0.10.0",
     "xp-array-behavior": "ExpandJS/xp-array-behavior#0.10.0",
     "xp-commands-behavior": "ExpandJS/xp-commands-behavior#0.10.0",
-    "xp-device": "ExpandJS/xp-device#0.10.0",
     "xp-i18n-behavior": "ExpandJS/xp-i18n-behavior#0.10.0",
     "xp-object-behavior": "ExpandJS/xp-object-behavior#0.10.0",
-    "xp-overlay": "ExpandJS/xp-overlay#0.10.0",
     "xp-refirer-behavior": "ExpandJS/xp-refirer-behavior#0.10.0",
     "xp-shared-behavior": "ExpandJS/xp-shared-behavior#0.10.0",
     "polymer": "Polymer/polymer#^1.2.0"
